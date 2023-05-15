@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
-filepath = ENV.fetch("FILEPATH", Rails.root.join("db/states_cities.json").to_s)
+filepath = ENV.fetch('FILEPATH', Rails.root.join('db/states_cities.json').to_s)
 states = JSON.parse(File.read(filepath))
 
 states.each do |state|
-  state_obj = State.find_or_create_by(acronym: state["acronym"], name: state["name"])
+  state_obj = State.find_or_create_by(acronym: state['acronym'], name: state['name'])
 
-  state["cities"].each do |city|
-    City.find_or_create_by(name: city["name"], state: state_obj)
-    Rails.logger.debug { "Adicionando a cidade #{city["name"]} ao estado #{state_obj.name}" }
+  state['cities'].each do |city|
+    City.find_or_create_by(name: city['name'], state: state_obj)
+    Rails.logger.debug { "Adicionando a cidade #{city['name']} ao estado #{state_obj.name}" }
   end
 end
 
-admin_user = User.find_or_create_by(email: "admin@rarolabs.com.br", cpf: "52947611578") do |model|
+admin_user = User.find_or_create_by(email: 'admin@rarolabs.com.br', cpf: '52947611578') do |model|
   model.attributes = {
-    name: "Admin RaroFood",
-    password: "12345678",
+    name: 'Admin RaroFood',
+    password: '12345678'
   }
 end
 
 Administrator.find_or_create_by(user: admin_user)
 
-state = State.find_by(acronym: "CE")
+state = State.find_by(acronym: 'CE')
 cities = City.includes(:state).where(state: { id: state.id })
 
 # Create User Admins
@@ -72,12 +72,12 @@ coupons = Coupon.all
     neighborhood: Faker::Address.community,
     reference: Faker::Address.secondary_address,
     complement: Faker::Address.secondary_address,
-    addressable: customer,
+    addressable: customer
   )
 
   telephone = Telephone.create(
     number: Faker::Number.number(digits: 11).to_s,
-    contactable: customer,
+    contactable: customer
   )
 
   customer.addresses << address
@@ -103,15 +103,14 @@ customers = Customer.all
     number: Faker::Address.building_number.to_s,
     neighborhood: Faker::Address.community,
     reference: Faker::Address.secondary_address,
-    complement: Faker::Address.secondary_address,
-    addressable: chef,
+    complement: Faker::Address.secondary_address
   )
 
   chef = Chef.create!(user:, approver:, address:)
 
   telephone = Telephone.create(
     number: Faker::Number.number(digits: 11).to_s,
-    contactable: chef,
+    contactable: chef
   )
 
   chef.address = address
@@ -196,7 +195,7 @@ orders.each do |order|
   if customer.cards.present?
     card = customer.cards.sample
     payment_type = card.card_type
-    payment_type += "_card"
+    payment_type += '_card'
   else
     payment_type = %w[pix bill].sample
   end
