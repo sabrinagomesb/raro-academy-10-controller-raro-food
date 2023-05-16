@@ -22,3 +22,6 @@ Rails/UniqueValidationWithoutIndex:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
