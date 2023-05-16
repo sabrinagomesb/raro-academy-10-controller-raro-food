@@ -15,4 +15,27 @@ Rails.application.routes.draw do
   get "/coupons", to: "coupons#index"
   get "/coupons/:id", to: "coupons#show"
   get "/coupons/:coupon_id/orders", to: "coupons#show_orders"
+
+  #   Model Customer:
+  resources :customers, only: %i[index show]
+
+  resources :customers do
+    resources :orders
+  end
+  get "/customers/:customer_id/addresses", to: "customers#show_addresses"
+  get "/customers/:customer_id/telephones", to: "customers#show_telephones"
+  get "/customers/:customer_id/cards", to: "customers#show_cards"
+  # todos os customers tem apenas um endereço
+
+  #   Model Order:
+  get "/orders", to: "orders#index"
+  get "/orders/:id", to: "orders#show"
+  # /orders
+  # /orders/:id
+  # /orders/:order_id/items
+  # /orders/:order_id/items/:item_id
+  # /orders/:order_id/dishes
+  # /orders/:order_id/dishes/:dish_id
+  # /orders/:order_id/city
+  # /orders/:order_id/payment
 end
