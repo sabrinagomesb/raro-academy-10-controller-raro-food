@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   # Model Chef:
-  resources :chefs, params: :chef_id, only: %i[index show] do           # /chefs
+  resources :chefs, params: :chef_id, only: %i[index show] do # /chefs
     get 'city', to: 'chefs#city'                                        # /chefs/:chef_id/city
     get 'state', to: 'states#index'                                     # /chefs/:chef_id/state
     resources :dishes, only: %i[index show]                             # /chefs/:chef_id/dishes
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   # Model Customers:
-  resources :customers, params: :customer_id, only: %i[index show] do    # /customer
+  resources :customers, params: :customer_id, only: %i[index show] do # /customer
     resources :orders, only: %i[index show]                              # /customer/:customer_id/dishes
     resources :telephones, only: %i[index show]                          # /customer/:customer_id/telephones
     resources :addresses, only: %i[index show]                           # /customer/:customer_id/addresses
@@ -19,21 +19,21 @@ Rails.application.routes.draw do
   end
 
   # Model Orders:
-  resources :orders, params: :order_id, only: %i[index show] do          # /orders
-    get 'city', to: 'orders#city'                                        # /orders/:chef_id/city
+  resources :orders, params: :order_id, only: %i[index show] do # /orders
+    get 'city', to: 'orders#city'                                        # /orders/:order_id/city
     resources :order_items, only: %i[index show]                         # /orders/:order_id/order_items
     resources :payments, path: 'payment', only: %i[index]                # /orders/:order_id/payments
     resources :dishes, only: %i[index show]                              # /orders/:order_id/dishes
   end
 
   # Model Payments:
-  resources :payments, params: :payment_id, only: %i[index show] do      # /payments
-    get 'customer', to: 'payments#customer'                              # /payments/:payment_id/customer
+  resources :payments, params: :payment_id, only: %i[index show] do # /payments
+    get 'customer', to: 'payments#customer' # /payments/:payment_id/customer
   end
 
   # Model Dishes:
-  resources :dishes, params: :dish_id, only: %i[index show] do          # /dishes
-    get 'categories', to: 'dishes#categories'                           # /dishes/:dish_id/categories
+  resources :dishes, params: :dish_id, only: %i[index show] do # /dishes
+    get 'categories', to: 'dishes#categories' # /dishes/:dish_id/categories
   end
   # Model States:
   resources :states, params: :state_id, only: %i[index show] do
