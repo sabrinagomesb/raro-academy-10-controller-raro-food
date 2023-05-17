@@ -19,7 +19,17 @@ Rails.application.routes.draw do
   end
 
   # Model Orders:
-  resources :orders, params: :order_id, only: %i[index show] # /orders
+  resources :orders, params: :order_id, only: %i[index show] do          # /orders
+    get 'city', to: 'orders#city'                                        # /orders/:chef_id/city
+    resources :order_items, only: %i[index show]                         # /orders/:order_id/order_items
+    resources :payments, path: 'payment', only: %i[index]                # /orders/:order_id/payments
+    resources :dishes, only: %i[index show]                              # /orders/:order_id/dishes
+  end
+
+  # Model Payments:
+  resources :payments, params: :payment_id, only: %i[index show] do      # /payments
+    get 'customer', to: 'payments#customer'                              # /payments/:payment_id/customer
+  end
 
   # Model Dishes:
   resources :dishes, params: :dish_id, only: %i[index show] do          # /dishes
@@ -40,55 +50,4 @@ Rails.application.routes.draw do
 
   # Model Address:
   resources :addresses, only: %i[index show] # /telephones
-
-  # resources :chefs, params: :chef_id, only: %i[index show] do
-  #   member do
-  #     resource :dishes, only: %i[index show create update destroy]
-  #   end
-  # end
-
-  # # Model Chef:
-  # get "/chefs", to: "chefs#index"
-  # get "/chefs/:id", to: "chefs#show"
-  # get "/chefs/:chef_id/address", to: "chefs#show_address"
-  # get "/chefs/:chef_id/city", to: "chefs#show_city"
-  # get "/chefs/:chef_id/state", to: "chefs#show_state"
-  # get "/chefs/:chef_id/telephones", to: "chefs#show_telephones"
-  # get "/chefs/:chef_id/dishes", to: "chefs#show_dishes"
-
-  # #   Model Coupon:
-  # get "/coupons", to: "coupons#index"
-  # get "/coupons/:id", to: "coupons#show"
-  # get "/coupons/:coupon_id/orders", to: "coupons#show_orders"
-
-  # #   Model Customer:
-  # resources :customers, :orders
-  # resources :customers, only: %i[index show] do
-  #   resources :orders
-  # end
-
-  # get "/customers/:customer_id/addresses", to: "customers#show_addresses"
-  # get "/customers/:customer_id/telephones", to: "customers#show_telephones"
-  # get "/customers/:customer_id/cards", to: "customers#show_cards"
-  # # todos os customers tem apenas um endereço
-
-  # #   Model Dish:
-  # get "/dishes", to: "dishes#index"
-  # get "/dishes/:id", to: "dishes#show"
-  # get "/dishes/:dish_id/categories", to: "dishes#show_categories"
-  # # /dishes
-  # # /dishes/:id
-  # # /dishes/:dish_id/categories
-
-  # #   Model Order:
-  # get "/orders", to: "orders#index"
-  # get "/orders/:id", to: "orders#show"
-  # /orders
-  # /orders/:id
-  # /orders/:order_id/items
-  # /orders/:order_id/items/:item_id
-  # /orders/:order_id/dishes
-  # /orders/:order_id/dishes/:dish_id
-  # /orders/:order_id/city
-  # /orders/:order_id/payment
 end
