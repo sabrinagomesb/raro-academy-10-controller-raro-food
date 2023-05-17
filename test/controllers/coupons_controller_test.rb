@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class OrdersControllerTest < ActionDispatch::IntegrationTest
+class CouponsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

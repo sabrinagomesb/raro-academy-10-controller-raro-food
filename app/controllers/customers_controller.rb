@@ -1,33 +1,32 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
+  before_action :set_customer, only: %i[show]
+
   def index
     @customers = Customer.all
     render json: @customers
   end
 
   def show
-    @customer = Customer.find(params[:id])
     render json: {
       customer_id: @customer.id,
       name: @customer.user.name,
       cpf: @customer.user.cpf,
       email: @customer.user.email,
+      birthday: @customer.birthday,
+      created_at: @customer.created_at,
+      updated_at: @customer.updated_at
     }
   end
 
-  def show_addresses
-    customer = Customer.find(params[:customer_id])
-    render json: customer.addresses
+  def cards
+    render json: @customer.cards
   end
 
-  def show_telephones
-    customer = Customer.find(params[:customer_id])
-    render json: customer.telephones
-  end
+  private
 
-  def show_cards
-    customer = Customer.find(params[:customer_id])
-    render json: customer.cards
+  def set_customer
+    @customer = Customer.find(params[:customer_id] || params[:id])
   end
 end

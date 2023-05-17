@@ -1,20 +1,42 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show ]
+  before_action :set_order, only: %i[show]
+  before_action :set_customer, only: %i[index show]
+  before_action :set_coupon, only: %i[index]
 
   def index
-    @orders = Order.all
-    # @orders = @customer.orders
-    # @customer = Customer.find(params[:customer_id])
-    render json: @orders
+    orders = if @customer
+               @customer.orders
+             elsif @coupon
+               @coupon.orders
+             else
+               Order.all
+             end
+
+    render json: orders
   end
 
   def show
+    order = @customer ? @customer.orders.find(params[:id]) : @order
+    render json: order
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_ad
-    @ad = Order.find(params[:id])
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def set_customer
+    return unless params[:customer_id]
+
+    @customer = Customer.find(params[:customer_id])
+  end
+
+  def set_coupon
+    return unless params[:coupon_id]
+
+    @coupon = Coupon.find(params[:coupon_id])
   end
 end
