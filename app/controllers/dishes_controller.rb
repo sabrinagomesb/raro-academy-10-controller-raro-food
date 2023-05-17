@@ -3,9 +3,17 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[show]
   before_action :set_chef, only: %i[index show]
+  before_action :set_order, only: %i[index show]
 
   def index
-    dishes = @chef ? @chef.dishes : Dish.all
+    dishes = if @order
+               @order.dishes
+             elsif @chef
+               @chef.dishes
+             else
+               Dish.all
+             end
+
     render json: dishes
   end
 
@@ -28,5 +36,11 @@ class DishesController < ApplicationController
     return unless params[:chef_id]
 
     @chef = Chef.find(params[:chef_id])
+  end
+
+  def set_order
+    return unless params[:order_id]
+
+    @order = Order.find(params[:order_id])
   end
 end
