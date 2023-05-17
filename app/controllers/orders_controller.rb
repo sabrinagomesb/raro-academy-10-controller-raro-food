@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show]
+  before_action :set_order, only: %i[show city]
   before_action :set_customer, only: %i[index show]
   before_action :set_coupon, only: %i[index]
 
@@ -22,10 +22,14 @@ class OrdersController < ApplicationController
     render json: order
   end
 
+  def city
+    render json: @order.city
+  end
+
   private
 
   def set_order
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:order_id] || params[:id])
   end
 
   def set_customer
