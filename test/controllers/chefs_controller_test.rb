@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ChefControllerTest < ActionDispatch::IntegrationTest
+class ChefsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
