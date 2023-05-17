@@ -14,16 +14,16 @@ class OrdersController < ApplicationController
                Order.all
              end
 
-    render json: orders
+    render json: orders, status: :ok
   end
 
   def show
     order = @customer ? @customer.orders.find(params[:id]) : @order
-    render json: order
+    render json: order, status: :ok
   end
 
   def city
-    render json: @order.city
+    render json: @order.city, status: :ok
   end
 
   private

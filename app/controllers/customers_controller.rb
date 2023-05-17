@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
-    render json: @customers
+    render json: @customers, status: :ok
   end
 
   def show
@@ -17,11 +17,11 @@ class CustomersController < ApplicationController
       birthday: @customer.birthday,
       created_at: @customer.created_at,
       updated_at: @customer.updated_at
-    }
+    }, status: :ok
   end
 
   def cards
-    render json: @customer.cards
+    render json: @customer.cards, status: :ok
   end
 
   private

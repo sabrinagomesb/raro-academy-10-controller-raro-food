@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
                   Address.all
                 end
 
-    render json: addresses
+    render json: addresses, status: :ok
   end
 
   def show

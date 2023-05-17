@@ -5,7 +5,7 @@ class ChefsController < ApplicationController
 
   def index
     @chefs = Chef.all
-    render json: @chefs
+    render json: @chefs, status: :ok
   end
 
   def show
@@ -16,11 +16,11 @@ class ChefsController < ApplicationController
       email: @chef.user.email,
       created_at: @chef.created_at,
       updated_at: @chef.updated_at
-    }
+    }, status: :ok
   end
 
   def city
-    render json: @chef.city
+    render json: @chef.city, status: :ok
   end
 
   private

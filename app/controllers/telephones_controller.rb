@@ -6,11 +6,11 @@ class TelephonesController < ApplicationController
 
   def index
     telephones = @user ? @user.telephones : Telephones.all
-    render json: telephones
+    render json: telephones, status: :ok
   end
 
   def show
-    render json: @telephones
+    render json: @telephones, status: :ok
   end
 
   private

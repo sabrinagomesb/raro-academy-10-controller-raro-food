@@ -4,7 +4,7 @@ class OrderItemsController < ApplicationController
   before_action :set_order, only: %i[index show]
 
   def index
-    render json: @order.items
+    render json: @order.items, status: :ok
   end
 
   def show

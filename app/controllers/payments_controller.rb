@@ -6,15 +6,23 @@ class PaymentsController < ApplicationController
 
   def index
     @payments = @order ? @order.payment : Payment.all
-    render json: @payments
+    render json: @payments, status: :ok
   end
 
   def show
-    render json: @payment
+    render json: @payment, status: :ok
   end
 
   def customer
-    render json: @payment.customer
+    render json: {
+      customer_id: @payment.customer.id,
+      name: @payment.customer.user.name,
+      cpf: @payment.customer.user.cpf,
+      email: @payment.customer.user.email,
+      birthday: @payment.customer.birthday,
+      created_at: @payment.customer.created_at,
+      updated_at: @payment.customer.updated_at
+    }, status: :ok
   end
 
   private

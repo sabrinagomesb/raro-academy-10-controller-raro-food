@@ -14,12 +14,12 @@ class DishesController < ApplicationController
                Dish.all
              end
 
-    render json: dishes
+    render json: dishes, status: :ok
   end
 
   def show
     dish = @chef ? @chef.dishes.find(params[:id]) : @dish
-    render json: dish
+    render json: dish, status: :ok
   end
 
   def categories

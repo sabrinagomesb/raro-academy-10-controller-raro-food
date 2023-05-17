@@ -6,11 +6,11 @@ class StatesController < ApplicationController
 
   def index
     states = @chef ? @chef.state : State.all
-    render json: states
+    render json: states, status: :ok
   end
 
   def show
-    render json: @state
+    render json: @state, status: :ok
   end
 
   def cities

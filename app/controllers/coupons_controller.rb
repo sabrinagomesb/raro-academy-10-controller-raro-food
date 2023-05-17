@@ -4,16 +4,16 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: %i[show]
 
   def index
-    render json: Coupon.all
+    render json: Coupon.all, status: :ok
   end
 
   def show
-    render json: @coupon
+    render json: @coupon, status: :ok
   end
 
   def show_orders
     coupon = Coupon.find(params[:coupon_id])
-    render json: coupon.orders
+    render json: coupon.orders, status: :ok
   end
 
   private
