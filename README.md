@@ -65,6 +65,6 @@ Recomenda-se também a execução da seguinte sequência de comandos:
   rails db:seed
 ```
 
-Para iniciar o servidor recomenda-se a utilização do comando `./bin/dev`, pois ele garante que os _assets_ serão todos devidamente processados.
+Para iniciar o servidor recomenda-se a utilização do comando `rails server`.
 
 É possível, caso queira, aproveitar as requisições previamente configuradas usando o [Insomnia](https://insomnia.rest), basta importar esse [arquivo](./insomnia.json).
