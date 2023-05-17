@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: %i[show customer]
+  before_action :set_payment, only: %i[show customer update destroy]
   before_action :set_order, only: %i[index]
 
   def index
@@ -25,6 +25,18 @@ class PaymentsController < ApplicationController
     }, status: :ok
   end
 
+  def update
+    if @payment.update(payment_params)
+      render json: @payment, status: :ok
+    else
+      render json: @payment.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    render json: { message: 'Successfully deleted' } if @payment.destroy
+  end
+
   private
 
   def set_payment
@@ -35,5 +47,9 @@ class PaymentsController < ApplicationController
     return unless params[:order_id]
 
     @order = Order.find(params[:order_id])
+  end
+
+  def payment_params
+    params.require(:payment).permit(:state, :payment_type)
   end
 end
