@@ -40,6 +40,8 @@
   - [x] GET
 - /customers/:customer_id/cards/:id
   - [x] GET
+  - [ ] UPDATE
+  - [ ] DELETE
 
 ## Model Dish
 
@@ -47,6 +49,8 @@
   - [x] GET
 - /dishes/:id
   - [x] GET
+  - [ ] UPDATE
+  - [ ] DELETE
 - /dishes/:dish_id/categories
   - [x] GET
 
@@ -58,8 +62,10 @@
   - [x] GET
 - /orders/:order_id/order_items
   - [x] GET
+  - [ ] ???
 - /orders/:order_id/order_items/:id
   - [x] GET
+  - [ ] ???
 - /orders/:order_id/dishes
   - [x] GET
 - /orders/:order_id/dishes/:id
@@ -73,6 +79,8 @@
 
 - /payments
   - [x] GET
+  - [x] PATCH
+  - [x] DELETE
 - /payments/:id
   - [x] GET
 - /payments/:payment_id/customer
@@ -95,6 +103,8 @@
   - [x] GET
 - /telephones/:id
   - [x] GET
+  - [ ] PATCH
+  - [ ] DELETE
 
 ## Model Address
 
@@ -102,3 +112,5 @@
   - [x] GET
 - /addresses/:id
   - [x] GET
+  - [ ] PATCH
+  - [ ] DELETE
