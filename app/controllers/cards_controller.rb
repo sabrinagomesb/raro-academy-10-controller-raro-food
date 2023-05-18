@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class CardsController < ApplicationController
+  include ControllersHelper
+
   before_action :set_customer
   before_action :set_card, only: %i[show update destroy]
+  before_action :card_belongs_to_customer?, only: %i[show update destroy]
 
   def index
     render json: @customer.cards, status: :ok
@@ -44,13 +47,18 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    if @customer
-      @card = @customer.cards.find(params[:id])
-    elsif params[:id]
+    if params[:id]
       @card ||= Card.find(params[:id])
     else
       render json: { error: 'Error: card not found' }, status: :not_found
     end
+  end
+
+  def card_belongs_to_customer?
+    return unless @customer && @card.customer_id != @customer.id
+
+    render json: { error: 'Error: card not belong to this customer', errors: full_errors(@customer, @card) },
+           status: :unprocessable_entity
   end
 
   def card_params

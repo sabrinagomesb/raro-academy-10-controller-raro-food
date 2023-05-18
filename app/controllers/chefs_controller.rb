@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ChefsController < ApplicationController
-  include ControllerHelper
+  include ControllersHelper
 
   before_action :set_chef, only: %i[show city update destroy]
 

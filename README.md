@@ -33,7 +33,7 @@ Abaixo estão listados outros pontos importantes referente ao desenvolvimento da
 
 ### Resultado
 
-Os testes das rotas implementadas foram realizados utilizando o [Insomnia](https://insomnia.rest), através de um ambiente que foi criado e dentro dele _folders_ com todas as requisições necessárias. Abaixo podem ser visualizados alguns resultados, mas para verificar todos é possível realizar o _import_ do arquivo [_insomnia.json_](./insomnia.json) que está na raiz do projeto.
+Os testes das rotas implementadas foram realizados utilizando o [Insomnia](https://insomnia.rest), através de um ambiente que foi criado e dentro dele _folders_ com todas as requisições necessárias. Abaixo podem ser visualizados alguns resultados, mas para verificar todos é possível realizar o _import_ do arquivo [_insomnia.json_](./insomnia.json) que está na raiz do projeto. Lembrando que algumas requisições vão requerer um request válido, já que o seed é feito de forma aleatória e pode não ser possível encontrar um _id_ específico que seja válido.
 
   <div align="center">
     <img src="./.gitlab/screenshots/insomnia_chefs.png " alt="preview exerc" width="33%">
