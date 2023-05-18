@@ -6,6 +6,9 @@
   - [x] GET
 - /chefs/:id
   - [x] GET
+  - [x] POST
+  - [x] PATCH
+  - [x] DELETE
 - /chefs/:chef_id/address
   - [x] GET
 - /chefs/:chef_id/city
