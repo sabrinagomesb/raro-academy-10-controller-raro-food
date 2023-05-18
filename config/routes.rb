@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   # Model Customers:
-  resources :customers, params: :customer_id, only: %i[index show] do               # /customer
+  resources :customers, params: :customer_id, only: %i[index show create update destroy] do # /customer
     resources :orders, only: %i[index show create update destroy]                   # /customer/:customer_id/orders
     resources :telephones                                                           # /customer/:customer_id/telephones
     resources :addresses                                                            # /customer/:customer_id/addresses

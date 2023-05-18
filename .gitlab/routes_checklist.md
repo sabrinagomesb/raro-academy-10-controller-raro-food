@@ -41,6 +41,9 @@
   - [x] GET
 - /customers/:id
   - [x] GET
+  - [x] POST
+  - [x] UPDATE
+  - [x] DELETE
 - /customers/:customer_id/orders
   - [x] GET
   - [x] POST
