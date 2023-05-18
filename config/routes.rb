@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   # Model Orders:
-  resources :orders, params: :order_id, only: %i[index show create update destroy] do  # /orders
+  resources :orders, params: :order_id, only: %i[index show create update destroy] do # /orders
     get 'city', to: 'orders#city'                                                   # /orders/:order_id/city
     resources :order_items, only: %i[index show create update destroy]              # /orders/:order_id/order_items
     resources :payments, path: 'payment', only: %i[index]                           # /orders/:order_id/payments
@@ -42,8 +42,8 @@ Rails.application.routes.draw do
   end
 
   # Model Coupons:
-  resources :coupons, params: :coupon_id, only: %i[index show] do                     # /coupons
-    resources :orders, only: %i[index]                                                # /coupons/:coupon_id/orders
+  resources :coupons, params: :coupon_id, only: %i[index show create update destroy] do # /coupons
+    resources :orders, only: %i[index] # /coupons/:coupon_id/orders
   end
 
   # Model Telephones:
