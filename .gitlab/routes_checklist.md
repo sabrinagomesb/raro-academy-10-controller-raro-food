@@ -76,10 +76,11 @@
   - [x] GET
 - /orders/:order_id/order_items
   - [x] GET
-  - [ ] ???
 - /orders/:order_id/order_items/:id
   - [x] GET
-  - [ ] ???
+  - [x] POST
+  - [x] UPDATE
+  - [x] DELETE
 - /orders/:order_id/dishes
   - [x] GET
 - /orders/:order_id/dishes/:id

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # Model Orders:
   resources :orders, params: :order_id, only: %i[index show] do                     # /orders
     get 'city', to: 'orders#city'                                                   # /orders/:order_id/city
-    resources :order_items, only: %i[index show]                                    # /orders/:order_id/order_items
+    resources :order_items, only: %i[index show create update destroy]              # /orders/:order_id/order_items
     resources :payments, path: 'payment', only: %i[index]                           # /orders/:order_id/payments
     resources :dishes, only: %i[index show]                                         # /orders/:order_id/dishes
   end
