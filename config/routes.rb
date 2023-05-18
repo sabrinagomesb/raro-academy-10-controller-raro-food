@@ -12,14 +12,14 @@ Rails.application.routes.draw do
 
   # Model Customers:
   resources :customers, params: :customer_id, only: %i[index show] do               # /customer
-    resources :orders, only: %i[index show]                                         # /customer/:customer_id/dishes
+    resources :orders, only: %i[index show create update destroy]                   # /customer/:customer_id/orders
     resources :telephones                                                           # /customer/:customer_id/telephones
     resources :addresses                                                            # /customer/:customer_id/addresses
     resources :cards, only: %i[index show create update destroy]                    # /customer/:customer_id/cards
   end
 
   # Model Orders:
-  resources :orders, params: :order_id, only: %i[index show] do                     # /orders
+  resources :orders, params: :order_id, only: %i[index show create update destroy] do  # /orders
     get 'city', to: 'orders#city'                                                   # /orders/:order_id/city
     resources :order_items, only: %i[index show create update destroy]              # /orders/:order_id/order_items
     resources :payments, path: 'payment', only: %i[index]                           # /orders/:order_id/payments

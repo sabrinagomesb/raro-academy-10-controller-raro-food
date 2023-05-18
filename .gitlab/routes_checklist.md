@@ -29,6 +29,9 @@
   - [x] GET
 - /coupons/:id
   - [x] GET
+  - [ ] POST
+  - [ ] PATCH
+  - [ ] DELETE
 - /coupons/:coupon_id/orders
   - [x] GET
 
@@ -40,6 +43,9 @@
   - [x] GET
 - /customers/:customer_id/orders
   - [x] GET
+  - [ ] POST
+  - [ ] PATCH
+  - [ ] DELETE
 - /customers/:customer_id/addresses/:id
   - [x] GET
   - [x] POST
