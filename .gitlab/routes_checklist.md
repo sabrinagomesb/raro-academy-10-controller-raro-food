@@ -14,6 +14,9 @@
   - [x] GET
 - /chefs/:chef_id/telephones
   - [x] GET
+  - [x] POST
+  - [x] PATCH
+  - [x] DELETE
 - /chefs/:chef_id/dishes
   - [x] GET
 
@@ -36,8 +39,14 @@
   - [x] GET
 - /customers/:customer_id/addresses/:id
   - [x] GET
+  - [x] POST
+  - [x] PATCH
+  - [x] DELETE
 - /customers/:customer_id/telephones
   - [x] GET
+  - [x] POST
+  - [x] PATCH
+  - [x] DELETE
 - /customers/:customer_id/cards/:id
   - [x] GET
   - [ ] UPDATE
@@ -79,6 +88,7 @@
 
 - /payments
   - [x] GET
+  - [x] POST
   - [x] PATCH
   - [x] DELETE
 - /payments/:id
@@ -103,8 +113,9 @@
   - [x] GET
 - /telephones/:id
   - [x] GET
-  - [ ] PATCH
-  - [ ] DELETE
+  - [x] POST
+  - [x] PATCH
+  - [x] DELETE
 
 ## Model Address
 
@@ -112,5 +123,6 @@
   - [x] GET
 - /addresses/:id
   - [x] GET
-  - [ ] PATCH
-  - [ ] DELETE
+  - [x] POST
+  - [x] PATCH
+  - [x] DELETE
