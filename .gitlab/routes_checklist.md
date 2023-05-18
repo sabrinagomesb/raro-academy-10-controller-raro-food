@@ -49,8 +49,9 @@
   - [x] DELETE
 - /customers/:customer_id/cards/:id
   - [x] GET
-  - [ ] UPDATE
-  - [ ] DELETE
+  - [x] POST
+  - [x] UPDATE
+  - [x] DELETE
 
 ## Model Dish
 
