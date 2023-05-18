@@ -34,11 +34,10 @@ cities = City.includes(:state).where(state: { id: state.id })
   user = User.create!(name:, cpf:, email:, password:)
   Administrator.create!(user:)
 end
-
 administrators = Administrator.all
 
 # Create Coupons
-50.times do
+100.times do
   code = Faker::Alphanumeric.alpha(number: 10).upcase
   name = Faker::Commerce.product_name
   description = Faker::Lorem.paragraph
@@ -53,7 +52,7 @@ end
 coupons = Coupon.all
 
 # Create User Customers
-10.times do
+20.times do
   name = Faker::Name.name
   cpf = Faker::IDNumber.brazilian_citizen_number
   email = Faker::Internet.email
@@ -87,7 +86,7 @@ end
 customers = Customer.all
 
 # Create User Chefs
-10.times do
+20.times do
   name = Faker::Name.name
   cpf = Faker::IDNumber.brazilian_citizen_number
   email = Faker::Internet.email
@@ -120,15 +119,15 @@ end
 chefs = Chef.all
 
 # Create Categories
-6.times do
-  name = Faker::Restaurant.type
+50.times do
+  name = Faker::Commerce.unique.department(max: 5)
   Category.create!(name:)
 end
 
 categories = Category.all
 
 # Create Dishes
-50.times do
+100.times do
   name = Faker::Food.dish
   description = Faker::Food.description
   unit_price = Faker::Number.decimal(l_digits: 2)
@@ -137,13 +136,13 @@ categories = Category.all
   active = Faker::Boolean.boolean
 
   dish = Dish.create!(name:, description:, unit_price:, available:, active:, chef:)
-  dish.categories << categories.sample
+  dish.categories << categories.sample(rand(1..5))
 end
 
 dishes_available = Dish.where(active: true).where(available: true)
 
 # Create Orders
-50.times do
+100.times do
   customer = customers.sample
   delivery_address = customer.addresses.sample
   status = 1
@@ -174,7 +173,7 @@ orders.each do |order|
 end
 
 # Create Cards
-10.times do
+100.times do
   customer = customers.sample
   number = Faker::Number.number(digits: 16).to_s
   name = Faker::Name.name
@@ -184,6 +183,7 @@ end
 
   Card.create!(customer:, number:, name:, security_code:, card_type:, expiration_date:)
 end
+
 cards = Card.all
 
 # Create Payments
