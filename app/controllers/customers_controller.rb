@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
+  include ControllerHelper
+
   before_action :set_customer, only: %i[show update destroy]
   before_action :set_user, only: %i[update destroy]
 
@@ -25,7 +27,8 @@ class CustomersController < ApplicationController
     if user.save && customer.save
       render json: { message: 'Customer successfully created', customer: customer_json(customer) }, status: :created
     else
-      render json: { error: 'Error: customer not created', errors: user.errors }, status: :unprocessable_entity
+      render json: { error: 'Error: customer not created', errors: full_errors(user, customer) },
+             status: :unprocessable_entity
     end
   end
 
@@ -33,7 +36,8 @@ class CustomersController < ApplicationController
     if @user.update(user_params) && @customer.update(customer_params)
       render json: { message: 'Customer successfully updated', customer: customer_json(customer) }, status: :ok
     else
-      render json: { error: 'Error: customer not updated', errors: @user.errors }, status: :unprocessable_entity
+      render json: { error: 'Error: customer not updated', errors: full_errors(user, customer) },
+             status: :unprocessable_entity
     end
   end
 
