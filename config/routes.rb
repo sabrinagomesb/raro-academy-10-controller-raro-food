@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   # Model Chef:
-  resources :chefs, params: :chef_id, only: %i[index show] do                       # /chefs
+  resources :chefs, params: :chef_id, only: %i[index show create update destroy] do # /chefs
     get 'city', to: 'chefs#city'                                                    # /chefs/:chef_id/city
     get 'state', to: 'states#index'                                                 # /chefs/:chef_id/state
     resources :dishes, only: %i[index show create update destroy]                   # /chefs/:chef_id/dishes
