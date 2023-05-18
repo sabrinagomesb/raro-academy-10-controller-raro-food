@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :chefs, params: :chef_id, only: %i[index show] do                       # /chefs
     get 'city', to: 'chefs#city'                                                    # /chefs/:chef_id/city
     get 'state', to: 'states#index'                                                 # /chefs/:chef_id/state
-    resources :dishes, only: %i[index show]                                         # /chefs/:chef_id/dishes
+    resources :dishes, only: %i[index show create update destroy]                   # /chefs/:chef_id/dishes
     resources :telephones, only: %i[index show create update destroy]               # /chefs/:chef_id/telephones
     resources :addresses, path: 'address', only: %i[index]                          # /chefs/:chef_id/address
   end
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   # Model Dishes:
-  resources :dishes, params: :dish_id, only: %i[index show] do                        # /dishes
+  resources :dishes, params: :dish_id, only: %i[index show create update destroy] do  # /dishes
     get 'categories', to: 'dishes#categories'                                         # /dishes/:dish_id/categories
   end
 

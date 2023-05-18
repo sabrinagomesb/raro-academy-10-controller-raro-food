@@ -19,6 +19,9 @@
   - [x] DELETE
 - /chefs/:chef_id/dishes
   - [x] GET
+  - [x] POST
+  - [x] PATCH
+  - [x] DELETE
 
 ## Model Coupon
 
@@ -59,8 +62,9 @@
   - [x] GET
 - /dishes/:id
   - [x] GET
-  - [ ] UPDATE
-  - [ ] DELETE
+  - [x] POST
+  - [x] UPDATE
+  - [x] DELETE
 - /dishes/:dish_id/categories
   - [x] GET
 
